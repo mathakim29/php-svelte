@@ -1,9 +1,12 @@
-# SveltePHP
+<div align="center">
 
-![Svelte](https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-%23777BB4.svg?&logo=php&logoColor=white)
+<h2>SveltePHP</h2>
 
------
+<img src="https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white" alt="Svelte">
+<img src="https://img.shields.io/badge/PHP-%23777BB4.svg?&logo=php&logoColor=white" alt="PHP">
+</div>
+<br>
+
 
 A small full-stack application setup using FrankenPHP/FlightPHP for the backend, Svelte 5 and Tailwind CSS for the frontend, and MySQL with RedBeanPHP for persistence.
 
