@@ -1,0 +1,54 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./public:/app/public:Z
+      - caddy_data:/data
+      - caddy_config:/config
+      - vendor:/app/vendor
+      - node_modules:/app/node_modules
+      - deno_cache:/deno-dir
+      - ./app:/app/app:Z
+      - ./api:/app/api:z
+      - ./composer.json:/app/composer.json:Z
+    environment:
+      - SERVER_NAME=:80
+      - DB_DRIVER=mysql
+      - DB_HOST=mysql
+      - DB_NAME=app
+      - DB_USER=app
+      - DB_PASSWORD=app
+    command: ["sh", "-c", "deno run --allow-all /app/watch.ts & exec frankenphp run --config /etc/frankenphp/Caddyfile --adapter caddyfile"]
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    
+volumes:
+  vendor:
+  caddy_data:
+  caddy_config:
+  node_modules:
+  deno_cache:
+  mysql_data:

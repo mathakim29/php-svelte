@@ -1,0 +1,31 @@
+# PHP dependencies
+/vendor/
+
+# Deno and JavaScript dependencies/cache
+/node_modules/
+/.deno/
+/deno.json
+/deno.lock
+
+# Generated frontend assets
+/public/bundle.js
+/public/style.css
+
+# Local databases and runtime data
+/*.db
+/data/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Docker and local logs
+*.log
+/tmp/
+
+# Editors and OS files
+.idea/
+.vscode/*.local.json
+.DS_Store
+Thumbs.db
