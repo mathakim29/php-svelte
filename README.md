@@ -1,17 +1,7 @@
+# SveltePHP
 
-<center>
-  <span style="font-size: 30px"> SveltePHP </span>
-</center>
-
-<center>
-  
- <img src="https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white" alt="Svelte">
-<img src="https://img.shields.io/badge/PHP-%23777BB4.svg?&logo=php&logoColor=white" alt="PHP">
-
-  
-
-
-</center>
+![Svelte](https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-%23777BB4.svg?&logo=php&logoColor=white)
 
 -----
 
