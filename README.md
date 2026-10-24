@@ -1,114 +1,80 @@
 <div align="center">
 
-<h3 style="font-size: 6rem;">SveltePHP</h3>
+# SveltePHP
 
-<img style="width: 50px;" src="https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white" alt="Svelte">
-<img style="width: 50px;" src="https://img.shields.io/badge/PHP-%23777BB4.svg?&logo=php&logoColor=white" alt="PHP">
+![Svelte](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.5-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white)
+
 </div>
-<br>
 
+A small full-stack starter project with a Svelte frontend, PHP backend, and
+MySQL database.
 
-A small full-stack application setup using FrankenPHP/FlightPHP for the backend, Svelte 5 and Tailwind CSS for the frontend, and MySQL with RedBeanPHP for persistence.
+## Start the app
 
-> [!NOTE]
-> This project is meant to be as an experimental template for future projects
-
-## Requirements
-
-- Docker or nerdctl with Compose support
-- Ports `8000` and `8080` available
-
-## Start the application
+You need [Nerdctl](https://github.com/containerd/nerdctl) with Compose support.
 
 ```bash
 nerdctl compose up -d --build
 ```
 
-Open the application at [http://localhost:8000](http://localhost:8000). Open phpMyAdmin at [http://localhost:8080](http://localhost:8080).
+Open the app at [http://localhost:8010](http://localhost:8010).
 
-phpMyAdmin credentials:
+phpMyAdmin is available at [http://localhost:8080](http://localhost:8080).
 
-```text
-Server: mysql
-Username: app
-Password: app
-Database: app
-```
-
-The MySQL root password is `root` for local development.
-
-## Development workflow
-
-The `app/` directory is mounted into the FrankenPHP container. The Deno watcher in `watch.ts` watches it and rebuilds automatically:
-
-- Svelte is bundled to `public/bundle.js` with esbuild.
-- Tailwind CSS is generated to `public/style.css`.
-- Builds are incremental and debounced.
-
-Edit `app/App.svelte`, save, and refresh the browser. Build output is available with:
+To stop everything:
 
 ```bash
-nerdctl logs -f php-svelte-app-1
+nerdctl compose down
 ```
 
-## Backend and API
+## Development
 
-PHP entrypoint: `public/index.php`.
+Edit the frontend files in `app/`. Changes are picked up automatically while
+the app is running. Refresh the browser to see them.
 
-API route files live in `api/` and are loaded automatically. Add FlightPHP routes to a new `.php` file there.
+PHP routes live in `server/routes/`. The public entrypoint is
+`public/index.php`.
 
-The example user API is:
+## Example API
 
-```text
-GET  /api/user
-POST /api/user
+List users:
+
+```bash
+curl http://localhost:8010/api/user
 ```
 
 Create a user:
 
 ```bash
-curl -X POST http://localhost:8000/api/user \
+curl -X POST http://localhost:8010/api/user \
   -H 'Content-Type: application/json' \
   -d '{"name":"Joey","email":"joey@example.com"}'
 ```
 
-List users:
-
-```bash
-curl http://localhost:8000/api/user
-```
-
 ## Database
 
-The `app` service connects to the Compose service named `mysql` using these environment variables:
+The local MySQL database uses:
 
 ```text
-DB_DRIVER=mysql
-DB_HOST=mysql
-DB_NAME=app
-DB_USER=app
-DB_PASSWORD=app
+Database: app
+Username: app
+Password: app
+Root password: root
 ```
 
-RedBeanPHP creates tables and columns as records are stored. MySQL data is persisted in the `mysql_data` volume.
+Database data is kept in a named volume so it survives container restarts.
 
 ## Useful commands
 
 ```bash
-# Rebuild after Dockerfile or dependency changes
-nerdctl compose up -d --build --force-recreate
-
-# View service status
+# View running services
 nerdctl compose ps
 
-# View PHP logs
-nerdctl logs -f php-svelte-app-1
+# Follow application logs
+nerdctl compose logs -f app
 
-# Open a shell in the PHP container
+# Open a shell in the app container
 nerdctl compose exec app sh
-
-# Stop the stack
-nerdctl compose down
 ```
-
-Named volumes preserve Composer dependencies, Deno cache, FrankenPHP data, and MySQL data between restarts.
