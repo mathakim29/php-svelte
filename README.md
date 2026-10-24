@@ -1,9 +1,9 @@
 <div align="center">
 
-<h2>SveltePHP</h2>
+<h3 style="font-size: 6rem;">SveltePHP</h3>
 
-<img src="https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white" alt="Svelte">
-<img src="https://img.shields.io/badge/PHP-%23777BB4.svg?&logo=php&logoColor=white" alt="PHP">
+<img style="width: 50px;" src="https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white" alt="Svelte">
+<img style="width: 50px;" src="https://img.shields.io/badge/PHP-%23777BB4.svg?&logo=php&logoColor=white" alt="PHP">
 </div>
 <br>
 
