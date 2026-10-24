@@ -22,7 +22,7 @@ services:
       - DB_NAME=app
       - DB_USER=app
       - DB_PASSWORD=app
-    command: ["sh", "-c", "watchexec --watch /app/app --restart -- /app/.local/bin/svbuild /app/app /app/public/dist & exec frankenphp run --config /etc/Caddyfile --adapter caddyfile"]
+    command: ["sh", "-c", "watchexec --watch /app/app --restart -- /app/.local/bin/svbuild /app/app /app/root/dist & exec frankenphp run --config /etc/Caddyfile --adapter caddyfile"]
     restart: unless-stopped
 
   mysql:

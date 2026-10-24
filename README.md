@@ -35,7 +35,10 @@ Edit the frontend files in `app/`. Changes are picked up automatically while
 the app is running. Refresh the browser to see them.
 
 PHP routes live in `server/routes/`. The public entrypoint is
-`public/index.php`.
+`root/index.php`.
+
+Place images, videos, fonts, and other public assets in `public/`.
+They are available at URLs such as `/public/image.png`.
 
 ## Example API
 

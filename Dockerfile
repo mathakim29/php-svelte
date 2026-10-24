@@ -11,5 +11,6 @@ COPY Caddyfile /etc/Caddyfile
 COPY .local/bin/svbuild /app/.local/bin/svbuild
 COPY app /app/app
 COPY server /app/server
+COPY root /app/root
 COPY public /app/public
 

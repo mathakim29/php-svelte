@@ -3,6 +3,7 @@
     "**/public": true
   },
   "search.exclude": {
-    "**/public": true
+    "**/public": true,
+    "**/.local/bin": true
   }
 }
