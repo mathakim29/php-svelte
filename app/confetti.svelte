@@ -1,6 +1,6 @@
 <script>
   // Import directly from esm.sh inside the .svelte file (this is example)
-  import confetti from 'https://esm.sh/canvas-confetti@1.9.4';
+  import confetti from 'canvas-confetti';
 
   export function fire() {
     confetti({
@@ -12,7 +12,7 @@
 </script>
 
 <button onclick={fire}>
-  🎉 Fire Confetti!
+  🎉 Fire Confetti!s
 </button>
 
 <style>

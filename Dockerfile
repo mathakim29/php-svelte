@@ -4,5 +4,12 @@ RUN CGO_ENABLED=1 XCADDY_SETCAP=1 XCADDY_GO_BUILD_FLAGS="-ldflags='-w -s' -tags=
 FROM dunglas/frankenphp:1.13.2-php8-alpine AS runner
 COPY --from=builder /usr/local/bin/frankenphp /usr/local/bin/frankenphp
 RUN install-php-extensions pdo pdo_mysql pdo_pgsql pdo_sqlite mysqli pgsql redis gd intl zip bcmath opcache pcntl exif mbstring xml curl sodium apcu parallel
-RUN apk add uv deno composer
-COPY watch.ts /app/watch.ts
+RUN apk add uv deno composer watchexec
+
+WORKDIR /app
+COPY Caddyfile /etc/Caddyfile
+COPY .local/bin/svbuild /app/.local/bin/svbuild
+COPY app /app/app
+COPY server /app/server
+COPY public /app/public
+

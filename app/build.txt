@@ -1,0 +1,3 @@
+# Optional packages resolved before each Svelte build.
+# Keep core svbuild dependencies in svbuild.ts.
+npm:canvas-confetti@1.9.4

@@ -1,6 +1,6 @@
 {
   "files.exclude": {
-    "**/public": false
+    "**/public": true
   },
   "search.exclude": {
     "**/public": true
